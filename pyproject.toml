@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sampletracker"
+version = "0.1.0"
+description = ""
+authors = ["Cade Mirchandani <cmirchan@ucsc.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.7"
+django-allauth = "^0.63.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
