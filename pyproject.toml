@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.11"
 django = "^5.0.7"
 django-allauth = "^0.63.3"
+django-crispy-forms = "^2.2"
+crispy-bootstrap5 = "^2024.2"
 
 
 [build-system]

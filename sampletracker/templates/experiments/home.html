@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Experiments Home{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Experiments</h1>
+        <a class="btn btn-primary" href="{% url 'samples:create_cell_experiment' %}">Create New Experiment</a>
+    </div>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Cell Line</th>
+                <th>Infections</th>  <!-- Added Infections Column -->
+                <th>Created By</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for experiment in experiments %}
+                <tr>
+                    <td>{{ experiment.title }}</td>
+                    <td>{{ experiment.description }}</td>
+                    <td>{{ experiment.cell_line.name }}</td>
+                    <td>
+                        {% for infection in experiment.infections.all %}
+                            {{ infection.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>  <!-- Display Infections -->
+                    <td>{{ experiment.created_by.username }}</td>
+                    <td>{{ experiment.created_at }}</td>
+                    <td>
+                        <a class="btn btn-secondary btn-sm" href="{% url 'samples:edit_cell_experiment' experiment.id %}">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'samples:delete_cell_experiment' experiment.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
